@@ -1,0 +1,33 @@
+# Laravel
+jutif-datamining/vendor/
+jutif-datamining/.env
+jutif-datamining/storage/*.key
+jutif-datamining/storage/framework/cache/data/*
+jutif-datamining/storage/framework/views/*.php
+jutif-datamining/storage/framework/sessions/*
+jutif-datamining/storage/logs/*.log
+jutif-datamining/node_modules/
+jutif-datamining/public/build/
+jutif-datamining/public/hot
+jutif-datamining/public/storage
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv
+env/
+venv/
+ENV/
+.idea/
+.vscode/
+
+# Project Specific
+jutif-datamining/processing/hasil_*.xlsx
+jutif-datamining/processing/dataset_clean.xlsx
+jutif-datamining/processing/dataset_binary_arm.xlsx
+jutif-datamining/processing/log_python*.txt
+log_python*.txt
+hello.txt
+test_import.txt
