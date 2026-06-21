@@ -3,11 +3,6 @@
 @section('page-title','K-Means Clustering')
 @section('page-subtitle','Hasil pengelompokan topik penelitian JUTIF (k=7, TF-IDF Keyword Boosting)')
 
-@section('header-actions')
-<a href="{{ route('clustering.pca') }}" class="btn btn-outline text-xs">
-    <i class="fas fa-braille"></i> Visualisasi PCA
-</a>
-@endsection
 
 @section('content')
 {{-- Cluster Cards --}}

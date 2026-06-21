@@ -6,7 +6,11 @@ use App\Http\Controllers\ArmController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ImportController;
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::prefix('clustering')->name('clustering.')->group(function () {
     Route::get('/',        [ClusteringController::class, 'index'])->name('index');

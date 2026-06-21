@@ -11,8 +11,8 @@
     <style type="text/tailwindcss">
         @layer utilities {
             .sidebar-link { @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 w-full; }
-            .sidebar-link:hover { @apply bg-blue-700 text-white; }
-            .sidebar-link.active { @apply bg-white text-blue-700 font-bold shadow; }
+            .sidebar-link:hover { @apply bg-white/10 text-white; }
+            .sidebar-link.active { @apply bg-white text-blue-800 font-bold shadow-md; }
             .card { @apply bg-white rounded-xl shadow-sm border border-gray-100 p-5; }
             .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold; }
             .btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150; }
@@ -43,6 +43,9 @@
         <!-- Nav -->
         <nav class="flex-1 px-3 py-4 space-y-1">
             <div class="text-blue-400 text-xs font-semibold uppercase px-4 mb-2">Overview</div>
+            <a href="/" class="sidebar-link text-blue-100">
+                <i class="fas fa-home w-4"></i> Beranda
+            </a>
             <a href="{{ route('dashboard') }}"
                class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : 'text-blue-100' }}">
                 <i class="fas fa-gauge-high w-4"></i> Dashboard
