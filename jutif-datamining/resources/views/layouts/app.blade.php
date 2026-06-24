@@ -57,7 +57,7 @@
                 <i class="fas fa-layer-group w-4"></i> K-Means Clustering
             </a>
             <a href="{{ route('arm.index') }}"
-               class="sidebar-link {{ request()->routeIs('arm.*') ? 'active' : 'text-blue-100' }}">
+               class="sidebar-link {{ request()->routeIs('arm.index') ? 'active' : 'text-blue-100' }}">
                 <i class="fas fa-arrow-right-arrow-left w-4"></i> Association Rules
             </a>
             <a href="{{ route('arm.itemsets') }}"

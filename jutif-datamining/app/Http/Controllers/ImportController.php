@@ -99,19 +99,32 @@ class ImportController extends Controller
             $sheet = $spreadsheet->getSheetByName($sn);
             $rows  = $sheet->toArray(null, true, true, true);
             $headers = array_map('strtolower', array_map('trim', $rows[1]));
+            $map = [];
+            foreach ($headers as $col => $h) {
+                if ($h === 'antecedents') $map['antecedents'] = $col;
+                if ($h === 'consequents') $map['consequents'] = $col;
+                // Pastikan yang diambil adalah 'support' murni, bukan 'antecedent support'
+                if ($h === 'support')     $map['support']     = $col;
+                if ($h === 'confidence')  $map['confidence']  = $col;
+                if ($h === 'lift')        $map['lift']        = $col;
+                if ($h === 'leverage')    $map['leverage']    = $col;
+                if ($h === 'conviction')  $map['conviction']  = $col;
+            }
+
             $batch = [];
             foreach ($rows as $i => $row) {
                 if ($i === 1) continue;
-                $ant = trim($row['A'] ?? '');
-                if (empty($ant) || $ant === 'antecedents') continue;
+                $ant = $this->val($row, $map, 'antecedents');
+                if (empty($ant)) continue;
+                
                 $batch[] = [
                     'antecedents' => $ant,
-                    'consequents' => trim($row['B'] ?? ''),
-                    'support'     => (float)($row['C'] ?? 0),
-                    'confidence'  => (float)($row['D'] ?? 0),
-                    'lift'        => (float)($row['E'] ?? 0),
-                    'leverage'    => isset($row['F']) ? (float)$row['F'] : null,
-                    'conviction'  => isset($row['G']) ? (float)$row['G'] : null,
+                    'consequents' => $this->val($row, $map, 'consequents'),
+                    'support'     => (float)$this->val($row, $map, 'support'),
+                    'confidence'  => (float)$this->val($row, $map, 'confidence'),
+                    'lift'        => (float)$this->val($row, $map, 'lift'),
+                    'leverage'    => (float)$this->val($row, $map, 'leverage'),
+                    'conviction'  => (float)$this->val($row, $map, 'conviction'),
                     'created_at'  => now(), 'updated_at' => now(),
                 ];
                 $rulesCount++;
