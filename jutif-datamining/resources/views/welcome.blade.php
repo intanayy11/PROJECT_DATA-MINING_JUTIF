@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUTIF Research Analyzer — Beranda</title>
+    <title>JUTIF Research Analyzer — Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
         </div>
         <div class="hidden md:flex items-center gap-4 text-sm font-semibold">
             <a href="{{ route('dashboard') }}" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl transition-all shadow-lg shadow-blue-600/25 flex items-center gap-2 active:scale-95">
-                Buka Dashboard <i class="fas fa-arrow-right text-xs"></i>
+                Go to Dashboard <i class="fas fa-arrow-right text-xs"></i>
             </a>
         </div>
     </nav>
@@ -45,21 +45,21 @@
             <div class="flex-1 text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold mb-8 uppercase tracking-wider">
                     <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-ping"></span>
-                    Sistem Analisis Topik Otomatis
+                    Automated Topic Analysis System
                 </div>
                 <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-8 text-slate-900">
-                    Petakan Ilmu <br><span class="text-gradient">Teknik Informatika</span> Jauh Lebih Cepat.
+                    Map Informatics <br><span class="text-gradient">Research Trends</span> Much Faster.
                 </h1>
                 <p class="text-lg text-slate-500 max-w-xl leading-relaxed mb-12 mx-auto lg:mx-0">
-                    Platform cerdas berbasis <span class="font-bold text-slate-700">Data Mining</span> untuk mengolah ribuan publikasi ilmiah JUTIF UNSOED menjadi wawasan visual yang berharga.
+                    A smart <span class="font-bold text-slate-700">Data Mining</span> platform to process thousands of JUTIF UNSOED scientific publications into valuable visual insights.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <a href="{{ route('dashboard') }}" class="px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white text-lg font-bold rounded-2xl transition-all shadow-2xl flex items-center justify-center gap-3 active:scale-95 group">
-                        Mulai Analisis
+                        Start Analytics
                         <i class="fas fa-bolt group-hover:text-yellow-400 transition-colors"></i>
                     </a>
                     <a href="#fitur" class="px-10 py-5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-lg font-bold rounded-2xl transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow-md">
-                        Detail Fitur
+                        Feature Details
                     </a>
                 </div>
             </div>
@@ -80,8 +80,8 @@
                                 <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-xl rotate-3 mb-4">
                                     <i class="fas fa-chart-pie"></i>
                                 </div>
-                                <h4 class="font-bold text-slate-800 mb-2">Visualisasi Interaktif</h4>
-                                <p class="text-xs text-slate-500">Melihat persebaran topik melalui algoritma Clustering K-Means</p>
+                                <h4 class="font-bold text-slate-800 mb-2">Interactive Visualization</h4>
+                                <p class="text-xs text-slate-500">Observe topic distribution through K-Means Clustering algorithm</p>
                             </div>
                         </div>
                     </div>
@@ -98,21 +98,21 @@
                     <i class="fas fa-brain text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-4">Weighted TF-IDF</h3>
-                <p class="text-slate-500 text-sm leading-relaxed">Penyaringan kata kunci dengan memberikan bobot ekstra pada judul artikel untuk klasifikasi yang lebih presisi.</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Keyword extraction giving extra weight to article titles for more precise topic representation.</p>
             </div>
             <div class="text-center md:text-left">
                 <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 mx-auto md:mx-0">
                     <i class="fas fa-network-wired text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-4">K-Means Cluster</h3>
-                <p class="text-slate-500 text-sm leading-relaxed">Pengelompokan otomatis artikel ke dalam 7 klaster tema penelitian utama berdasarkan kemiripan konten.</p>
+                <h3 class="text-xl font-bold text-slate-900 mb-4">K-Means Clustering</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Automatic grouping of publications into 7 core research themes based on data similarity.</p>
             </div>
             <div class="text-center md:text-left">
                 <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 mx-auto md:mx-0">
                     <i class="fas fa-link text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-slate-900 mb-4">Association Rules</h3>
-                <p class="text-slate-500 text-sm leading-relaxed">Algoritma Apriori untuk menemukan pola relasi antar kata kunci jurnal yang sering digunakan secara bersamaan.</p>
+                <p class="text-slate-500 text-sm leading-relaxed">Apriori algorithm discovery of correlated hot keywords frequently co-occurring in JUTIF articles.</p>
             </div>
         </div>
     </section>
@@ -120,8 +120,8 @@
     <!-- Footer -->
     <footer class="py-12">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-slate-400 text-sm font-medium italic">"Membantu mahasiswa memetakan tren riset IT dengan sekali klik"</p>
-            <div class="mt-8 text-xs text-slate-400 font-semibold tracking-widest uppercase">Teknik Informatika © 2025</div>
+            <p class="text-slate-400 text-sm font-medium italic">"Empowering students to map IT research trend insights with a single click"</p>
+            <div class="mt-8 text-xs text-slate-400 font-semibold tracking-widest uppercase">Informatics Engineering © 2025</div>
         </div>
     </footer>
 

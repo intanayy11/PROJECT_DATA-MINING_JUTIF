@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@section('title','Visualisasi PCA')
-@section('page-title','Visualisasi PCA 2D')
-@section('page-subtitle','Distribusi artikel dalam ruang fitur PCA (2 komponen utama)')
+@section('title','PCA Visualization')
+@section('page-title','PCA 2D Visualization')
+@section('page-subtitle','Article distribution in PCA feature space (2 principal components)')
 
 @section('content')
 <div class="card mb-4">
@@ -13,7 +13,7 @@
         </div>
         @endforeach
     </div>
-    <p class="text-xs text-gray-400">Hover titik untuk melihat judul artikel. Setiap titik merepresentasikan 1 artikel.</p>
+    <p class="text-xs text-gray-400">Hover over points to view article titles. Each point represents 1 article.</p>
 </div>
 
 <div class="card">
@@ -45,7 +45,7 @@ new Chart(document.getElementById('pcaChart'), {
                 callbacks: {
                     label: ctx => {
                         const d = ctx.raw;
-                        return [d.title?.substring(0,60)+'...', 'Tahun: '+d.year];
+                        return [d.title?.substring(0,60)+'...', 'Year: '+d.year];
                     }
                 }
             }

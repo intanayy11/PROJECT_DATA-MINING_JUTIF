@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Association Rules')
 @section('page-title','Association Rule Mining')
-@section('page-subtitle','Hasil Algoritma Apriori — min_support=0.03, min_confidence=0.25')
+@section('page-subtitle','Apriori Algorithm Results — min_support=0.03, min_confidence=0.25')
 
 @section('header-actions')
 <a href="{{ route('arm.itemsets') }}" class="btn btn-outline text-xs">
@@ -37,7 +37,7 @@
 <div class="card mb-4">
     <form method="GET" class="flex flex-wrap gap-3 items-end">
         <div>
-            <label class="block text-xs text-gray-500 mb-1">Cari keyword</label>
+            <label class="block text-xs text-gray-500 mb-1">Search keyword</label>
             <input type="text" name="search" value="{{ $search }}" placeholder="Keyword..."
                    class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
         </div>
@@ -52,7 +52,7 @@
                    class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-28 focus:outline-none focus:ring-2 focus:ring-blue-400">
         </div>
         <div>
-            <label class="block text-xs text-gray-500 mb-1">Urutkan</label>
+            <label class="block text-xs text-gray-500 mb-1">Sort By</label>
             <select name="sort" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
                 <option value="lift"       {{ $sortBy=='lift'?'selected':'' }}>Lift ↓</option>
                 <option value="confidence" {{ $sortBy=='confidence'?'selected':'' }}>Confidence ↓</option>
@@ -104,7 +104,7 @@
                 </tr>
                 @empty
                 <tr><td colspan="7" class="text-center py-8 text-gray-400">
-                    Tidak ada rules. <a href="{{ route('import.index') }}" class="text-blue-500">Import data ARM</a>
+                    No rules found. <a href="{{ route('import.index') }}" class="text-blue-500">Import ARM data first</a>
                 </td></tr>
                 @endforelse
             </tbody>
@@ -113,9 +113,10 @@
     <div class="mt-4">{{ $rules->links() }}</div>
 
     <div class="mt-4 p-3 bg-gray-50 rounded-lg text-xs text-gray-500">
-        <strong>Keterangan:</strong>
-        <span class="inline-flex items-center gap-1 mx-2"><span class="w-3 h-3 bg-green-50 border border-green-200 rounded"></span> Lift ≥ 5 (sangat kuat)</span>
-        <span class="inline-flex items-center gap-1 mx-2"><span class="w-3 h-3 bg-yellow-50 border border-yellow-200 rounded"></span> Lift ≥ 2 (kuat)</span>
+        <strong>Legend:</strong>
+        <span class="inline-flex items-center gap-1 mx-2"><span class="w-3 h-3 bg-green-50 border border-green-200 rounded"></span> Lift ≥ 5 (very strong)</span>
+        <span class="inline-flex items-center gap-1 mx-2"><span class="w-3 h-3 bg-yellow-50 border border-yellow-200 rounded"></span> Lift ≥ 2 (strong)</span>
     </div>
 </div>
+
 @endsection

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('title','K-Means Clustering')
 @section('page-title','K-Means Clustering')
-@section('page-subtitle','Hasil pengelompokan topik penelitian JUTIF (k=7, TF-IDF Keyword Boosting)')
+@section('title','K-Means Clustering')
+@section('page-title','K-Means Clustering')
+@section('page-subtitle','JUTIF research topic clustering results (k=7, TF-IDF Keyword Boosting)')
 
 
 @section('content')
@@ -17,7 +19,7 @@
             <span class="text-2xl font-black text-gray-700">{{ $c->pct }}%</span>
         </div>
         <div class="font-semibold text-gray-800 text-sm leading-tight mb-2">{{ $c->cluster_label }}</div>
-        <div class="text-xs text-gray-500">{{ number_format($c->total) }} artikel</div>
+        <div class="text-xs text-gray-500">{{ number_format($c->total) }} articles</div>
         <div class="mt-2 w-full bg-gray-100 rounded-full h-1.5">
             <div class="h-1.5 rounded-full" style="width:{{ $c->pct }}%; background:{{ $color['bg'] }}"></div>
         </div>
@@ -28,24 +30,24 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
     {{-- Bar Chart Distribusi --}}
     <div class="card">
-        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-bar mr-2 text-blue-500"></i>Distribusi Artikel per Klaster</h3>
+        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-bar mr-2 text-blue-500"></i>Articles Distribution per Cluster</h3>
         <canvas id="clusterBar" height="180"></canvas>
     </div>
 
     {{-- Tren Line Chart --}}
     <div class="card">
-        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-line mr-2 text-purple-500"></i>Tren per Tahun</h3>
+        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-line mr-2 text-purple-500"></i>Trends per Year</h3>
         <canvas id="trendLine" height="180"></canvas>
     </div>
 
     {{-- Tabel Tren --}}
     <div class="card col-span-2">
-        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-table mr-2 text-green-500"></i>Distribusi Klaster per Tahun</h3>
+        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-table mr-2 text-green-500"></i>Cluster Distribution per Year</h3>
         <div class="overflow-x-auto">
             <table class="w-full text-sm">
                 <thead>
                     <tr class="bg-gray-50">
-                        <th class="text-left px-3 py-2 font-semibold text-gray-600">Klaster</th>
+                        <th class="text-left px-3 py-2 font-semibold text-gray-600">Cluster</th>
                         @foreach($years as $y)
                         <th class="text-center px-3 py-2 font-semibold text-gray-600">{{ $y }}</th>
                         @endforeach
@@ -80,6 +82,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 @section('scripts')

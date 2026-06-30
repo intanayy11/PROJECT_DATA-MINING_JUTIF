@@ -44,16 +44,16 @@
         <nav class="flex-1 px-3 py-4 space-y-1">
             <div class="text-blue-400 text-xs font-semibold uppercase px-4 mb-2">Overview</div>
             <a href="/" class="sidebar-link text-blue-100">
-                <i class="fas fa-home w-4"></i> Beranda
+                <i class="fas fa-home w-4"></i> Home
             </a>
             <a href="{{ route('dashboard') }}"
                class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : 'text-blue-100' }}">
                 <i class="fas fa-gauge-high w-4"></i> Dashboard
             </a>
 
-            <div class="text-blue-400 text-xs font-semibold uppercase px-4 mt-4 mb-2">Analisis</div>
+            <div class="text-blue-400 text-xs font-semibold uppercase px-4 mt-4 mb-2">Analytics</div>
             <a href="{{ route('clustering.index') }}"
-               class="sidebar-link {{ request()->routeIs('clustering.*') ? 'active' : 'text-blue-100' }}">
+               class="sidebar-link {{ request()->routeIs('clustering.index') ? 'active' : 'text-blue-100' }}">
                 <i class="fas fa-layer-group w-4"></i> K-Means Clustering
             </a>
             <a href="{{ route('arm.index') }}"
@@ -66,13 +66,13 @@
             </a>
             <a href="{{ route('clustering.pca') }}"
                class="sidebar-link {{ request()->routeIs('clustering.pca') ? 'active' : 'text-blue-100' }}">
-                <i class="fas fa-braille w-4"></i> Visualisasi PCA
+                <i class="fas fa-braille w-4"></i> PCA Visualization
             </a>
 
             <div class="text-blue-400 text-xs font-semibold uppercase px-4 mt-4 mb-2">Data</div>
             <a href="{{ route('articles.index') }}"
                class="sidebar-link {{ request()->routeIs('articles.*') ? 'active' : 'text-blue-100' }}">
-                <i class="fas fa-newspaper w-4"></i> Data Artikel
+                <i class="fas fa-newspaper w-4"></i> Articles Data
             </a>
             <a href="{{ route('import.index') }}"
                class="sidebar-link {{ request()->routeIs('import.*') ? 'active' : 'text-blue-100' }}">
@@ -83,7 +83,7 @@
         <!-- Footer -->
         <div class="px-6 py-4 border-t border-blue-700 text-xs text-blue-400">
             <div class="font-medium text-blue-200">JUTIF UNSOED Analyzer</div>
-            <div>Teknik Informatika © 2025</div>
+            <div>Informatics Engineering © 2025</div>
         </div>
     </aside>
 
@@ -99,7 +99,7 @@
                 @yield('header-actions')
                 <span class="text-xs text-gray-400 bg-gray-100 px-3 py-1.5 rounded-full">
                     <i class="fas fa-database mr-1"></i>
-                    {{ \App\Models\Article::count() }} artikel
+                    {{ \App\Models\Article::count() }} articles
                 </span>
             </div>
         </header>

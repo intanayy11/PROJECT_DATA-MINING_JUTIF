@@ -76,7 +76,7 @@ class ImportController extends Controller
         if ($batch) DB::table('articles')->insert($batch);
 
         DB::table('import_logs')->insert(['filename'=>$file->getClientOriginalName(),'type'=>'articles','rows_imported'=>$count,'created_at'=>now(),'updated_at'=>now()]);
-        return back()->with('success', "✅ Berhasil import $count artikel!");
+        return back()->with('success', "✅ Successfully imported $count articles!");
     }
 
     public function importArm(Request $request) {
@@ -162,7 +162,7 @@ class ImportController extends Controller
         }
 
         DB::table('import_logs')->insert(['filename'=>$file->getClientOriginalName(),'type'=>'arm','rows_imported'=>$rulesCount+$fiCount,'created_at'=>now(),'updated_at'=>now()]);
-        return back()->with('success', "✅ Berhasil import $rulesCount rules + $fiCount frequent itemsets!");
+        return back()->with('success', "✅ Successfully imported $rulesCount rules + $fiCount frequent itemsets!");
     }
 
     private function val($row, $map, $key) {

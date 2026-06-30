@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'Klaster '.$clusterId)
+@section('title', 'Cluster '.$clusterId)
 @section('page-title', 'C'.$clusterId.': '.($clusterInfo->cluster_label??''))
-@section('page-subtitle', ($clusterInfo->total??0).' artikel dalam klaster ini')
+@section('page-subtitle', ($clusterInfo->total??0).' articles in this cluster')
 
 @section('header-actions')
 <a href="{{ route('clustering.index') }}" class="btn btn-outline text-xs">
-    <i class="fas fa-arrow-left"></i> Kembali
+    <i class="fas fa-arrow-left"></i> Back
 </a>
 @endsection
 
@@ -20,11 +20,11 @@
                  style="background:{{ $color['bg'] }}">C{{ $clusterId }}</div>
             <div>
                 <div class="font-bold text-gray-800">{{ $clusterInfo->cluster_label ?? '-' }}</div>
-                <div class="text-sm text-gray-500">{{ number_format($clusterInfo->total ?? 0) }} artikel</div>
+                <div class="text-sm text-gray-500">{{ number_format($clusterInfo->total ?? 0) }} articles</div>
             </div>
         </div>
         <div class="text-xs text-gray-500 space-y-1">
-            <div>Filter aktif:
+            <div>Active Filter:
                 @if($year) <span class="badge bg-blue-100 text-blue-700">{{ $year }}</span> @endif
                 @if($search) <span class="badge bg-orange-100 text-orange-700">"{{ $search }}"</span> @endif
             </div>
@@ -33,7 +33,7 @@
 
     {{-- Top Keywords --}}
     <div class="card col-span-2">
-        <h3 class="font-semibold text-gray-700 mb-3 text-sm">Top Keywords dalam Klaster</h3>
+        <h3 class="font-semibold text-gray-700 mb-3 text-sm">Top Keywords in Cluster</h3>
         <div class="flex flex-wrap gap-2">
             @foreach($topKw as $kw => $cnt)
             @php $size = $cnt > 20 ? 'text-base font-bold' : ($cnt > 10 ? 'text-sm font-semibold' : 'text-xs'); @endphp
@@ -50,15 +50,15 @@
 <div class="card mb-4">
     <form method="GET" action="{{ route('clustering.show', $clusterId) }}" class="flex flex-wrap gap-3 items-end">
         <div>
-            <label class="block text-xs text-gray-500 mb-1">Cari judul/keyword</label>
+            <label class="block text-xs text-gray-500 mb-1">Search title/keyword</label>
             <input type="text" name="search" value="{{ $search }}"
-                   placeholder="Ketik kata kunci..."
+                   placeholder="Type keyword..."
                    class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-400">
         </div>
         <div>
-            <label class="block text-xs text-gray-500 mb-1">Filter tahun</label>
+            <label class="block text-xs text-gray-500 mb-1">Filter year</label>
             <select name="year" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-                <option value="">Semua tahun</option>
+                <option value="">All years</option>
                 @foreach($years as $y)
                 <option value="{{ $y }}" {{ $year==$y?'selected':'' }}>{{ $y }}</option>
                 @endforeach
@@ -74,16 +74,16 @@
 {{-- Articles Table --}}
 <div class="card">
     <div class="flex justify-between items-center mb-4">
-        <h3 class="font-bold text-gray-700">Daftar Artikel</h3>
-        <span class="text-sm text-gray-500">{{ $articles->total() }} artikel ditemukan</span>
+        <h3 class="font-bold text-gray-700">Articles List</h3>
+        <span class="text-sm text-gray-500">{{ $articles->total() }} articles found</span>
     </div>
     <div class="overflow-x-auto">
         <table class="w-full text-sm">
             <thead>
                 <tr class="bg-gray-50">
-                    <th class="text-left px-3 py-2 font-semibold text-gray-600">Judul</th>
-                    <th class="text-left px-3 py-2 font-semibold text-gray-600 w-40">Penulis</th>
-                    <th class="text-center px-3 py-2 font-semibold text-gray-600 w-16">Tahun</th>
+                    <th class="text-left px-3 py-2 font-semibold text-gray-600">Title</th>
+                    <th class="text-left px-3 py-2 font-semibold text-gray-600 w-40">Authors</th>
+                    <th class="text-center px-3 py-2 font-semibold text-gray-600 w-16">Year</th>
                     <th class="text-left px-3 py-2 font-semibold text-gray-600">Keywords</th>
                     <th class="w-10"></th>
                 </tr>
@@ -102,7 +102,7 @@
                     </td>
                 </tr>
                 @empty
-                <tr><td colspan="5" class="text-center py-8 text-gray-400">Tidak ada artikel ditemukan.</td></tr>
+                <tr><td colspan="5" class="text-center py-8 text-gray-400">No articles found.</td></tr>
                 @endforelse
             </tbody>
         </table>

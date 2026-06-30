@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('title','Dashboard')
 @section('page-title','Dashboard')
-@section('page-subtitle','Ringkasan tren topik penelitian JUTIF UNSOED')
+@section('page-subtitle','Summary of JUTIF UNSOED research topic trends')
 
 @section('content')
 {{-- STAT CARDS --}}
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
     @php
     $stats = [
-        ['icon'=>'fa-newspaper','color'=>'blue','label'=>'Total Artikel','value'=>number_format($totalArticles),'sub'=>($yearRange->min_y??'-').' – '.($yearRange->max_y??'-')],
-        ['icon'=>'fa-layer-group','color'=>'green','label'=>'Klaster','value'=>$totalClusters,'sub'=>'K-Means k=7'],
+        ['icon'=>'fa-newspaper','color'=>'blue','label'=>'Total Articles','value'=>number_format($totalArticles),'sub'=>($yearRange->min_y??'-').' – '.($yearRange->max_y??'-')],
+        ['icon'=>'fa-layer-group','color'=>'green','label'=>'Clusters','value'=>$totalClusters,'sub'=>'K-Means k=7'],
         ['icon'=>'fa-arrow-right-arrow-left','color'=>'orange','label'=>'Association Rules','value'=>$totalRules,'sub'=>'Apriori min_sup=0.03'],
         ['icon'=>'fa-tags','color'=>'purple','label'=>'Frequent Itemsets','value'=>$totalItemsets,'sub'=>'min_support=0.03'],
     ];
@@ -31,13 +31,13 @@
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
     {{-- CHART: Artikel per Tahun --}}
     <div class="card col-span-2">
-        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-bar mr-2 text-blue-500"></i>Artikel per Tahun</h3>
+        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-bar mr-2 text-blue-500"></i>Articles per Year</h3>
         <canvas id="yearChart" height="90"></canvas>
     </div>
 
     {{-- Distribusi Klaster --}}
     <div class="card">
-        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-pie-chart mr-2 text-green-500"></i>Distribusi Klaster</h3>
+        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-pie-chart mr-2 text-green-500"></i>Cluster Distribution</h3>
         <canvas id="clusterPie" height="200"></canvas>
     </div>
 </div>
@@ -45,7 +45,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
     {{-- CHART: Tren Klaster per Tahun --}}
     <div class="card col-span-2">
-        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-line mr-2 text-purple-500"></i>Tren Klaster per Tahun</h3>
+        <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-chart-line mr-2 text-purple-500"></i>Cluster Trend per Year</h3>
         <canvas id="trendChart" height="80"></canvas>
     </div>
 </div>
@@ -55,7 +55,7 @@
     <div class="card">
         <div class="flex items-center justify-between mb-4">
             <h3 class="font-bold text-gray-700"><i class="fas fa-tags mr-2 text-orange-500"></i>Top Keywords</h3>
-            <a href="{{ route('arm.itemsets') }}" class="text-xs text-blue-600 hover:underline">Lihat semua →</a>
+            <a href="{{ route('arm.itemsets') }}" class="text-xs text-blue-600 hover:underline">View all →</a>
         </div>
         <div class="space-y-2">
             @foreach($topKeywords as $kw)
@@ -79,7 +79,7 @@
     <div class="card">
         <div class="flex items-center justify-between mb-4">
             <h3 class="font-bold text-gray-700"><i class="fas fa-arrow-right-arrow-left mr-2 text-red-500"></i>Top Association Rules</h3>
-            <a href="{{ route('arm.index') }}" class="text-xs text-blue-600 hover:underline">Lihat semua →</a>
+            <a href="{{ route('arm.index') }}" class="text-xs text-blue-600 hover:underline">View all →</a>
         </div>
         @forelse($topRules as $rule)
         <div class="border border-gray-100 rounded-lg p-3 mb-2 hover:border-blue-200 transition-colors">
@@ -95,7 +95,7 @@
             </div>
         </div>
         @empty
-        <p class="text-gray-400 text-sm text-center py-4">Belum ada data ARM. <a href="{{ route('import.index') }}" class="text-blue-500">Import dulu</a></p>
+        <p class="text-gray-400 text-sm text-center py-4">No ARM data available. <a href="{{ route('import.index') }}" class="text-blue-500">Import first</a></p>
         @endforelse
     </div>
 </div>
@@ -112,7 +112,7 @@ new Chart(document.getElementById('yearChart'), {
     data: {
         labels: @json($perYear->keys()),
         datasets: [{
-            label: 'Jumlah Artikel',
+            label: 'Total Articles',
             data: @json($perYear->values()),
             backgroundColor: '#3B82F6',
             borderRadius: 6,
